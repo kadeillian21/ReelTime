@@ -66,8 +66,11 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+<<<<<<< HEAD
+=======
     airbrussh (1.4.1)
       sshkit (>= 1.6.1, != 1.7.0)
+>>>>>>> 58da1c127d9303e1b904c32831f029c52a7d7015
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.13.0)

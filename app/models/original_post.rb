@@ -1,0 +1,2 @@
+class OriginalPost < ApplicationRecord
+end

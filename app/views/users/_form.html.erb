@@ -11,6 +11,26 @@
     </div>
   <% end %>
 
+  <div>
+    <%= form.label "Name"%>
+    <%= form.text_field :full_name%>
+  </div>
+  <div>
+    <%= form.label "Username"%>
+    <%= form.text_field :user_name%>
+  </div>
+  <div>
+    <%= form.label "Email"%>
+    <%= form.email_field :email%>
+  </div>
+  <div>
+    <%= form.label "Bio"%>
+    <%= form.text_field :bio%>
+  </div>
+  <div>
+    <%= form.label "Bio"%>
+    <%= form.file_field :profile_image%>
+  </div>
 
   <div>
     <%= form.submit %>

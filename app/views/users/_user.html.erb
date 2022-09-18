@@ -1,6 +1,11 @@
 <div id="<%= dom_id user %>">
 </div>
 
+<p>
+<strong>Image data:</strong>
+<%= image_tag @user.image_url if @user.image %>
+</p>
+
 <div>
   <%= user.full_name%>
 </div>

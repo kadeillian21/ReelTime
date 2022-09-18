@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  include ImageUploader::Attachment(:profile_image)
+  include ImageUploader::Attachment(:image)
   validates :user_name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   has_many :follower_relationships, class_name: "Relationship", foreign_key: "leader_id"

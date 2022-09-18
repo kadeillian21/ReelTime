@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_18_201923) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_18_203338) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_201923) do
     t.string "email"
     t.string "password_digest"
     t.text "bio"
-    t.text "profile_image_data"
+    t.text "image_data"
     t.string "instagram_url"
     t.string "tiktok_url"
     t.string "snapchat_url"

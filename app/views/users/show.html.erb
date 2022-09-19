@@ -2,11 +2,6 @@
 
 <%= render @user %>
 
-<p>
-<strong>Image data:</strong>
-<%= image_tag @user.image_url if @user.image %>
-</p>
-
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
   <%= link_to "Back to users", users_path %>

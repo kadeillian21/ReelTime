@@ -1,10 +1,10 @@
 module OrignialPostsHelper
-  def image_for(user, width = "", height = "")
+  def post_image_for(original_post, width = "", height = "")
     @image = original_post.image
     if @image == nil
-      @image_original_post = image_tag("user.jpg", alt: "#{user.full_name}'s post #{original_post.id}", width: width, height: height)
+      @image_original_post = image_tag("user.jpg", alt: "#{current_user.full_name}'s post #{original_post.id}", width: width, height: height)
     else
-      @image_original_post = image_tag(original_post.image_url, alt: "#{user.full_name}'s post #{original_post.id}", width: width, height: height)
+      @image_original_post = image_tag(original_post.image_url, alt: "#{current_user.full_name}'s post #{original_post.id}", width: width, height: height)
     end
     return @image_original_post
   end

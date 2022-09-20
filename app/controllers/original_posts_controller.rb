@@ -1,6 +1,5 @@
-class OrignialPostsController < ApplicationController
-  before_action :authenticate_user, except: [:edit, :create]
-  before_action :set_user, only: %i[ show edit update destroy ]
+class OriginalPostsController < ApplicationController
+  before_action :set_original_post, only: %i[ show edit update destroy ]
 
   # GET /original_posts or /original_posts.json
   def index
@@ -26,7 +25,7 @@ class OrignialPostsController < ApplicationController
 
     respond_to do |format|
       if @original_post.save
-        format.html { redirect_to original_post_url(@original_post), notice: "original_post was successfully created." }
+        format.html { redirect_to original_post_url(@original_post), notice: "Original post was successfully created." }
         format.json { render :show, status: :created, location: @original_post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +38,7 @@ class OrignialPostsController < ApplicationController
   def update
     respond_to do |format|
       if @original_post.update(original_post_params)
-        format.html { redirect_to original_post_url(@original_post), notice: "original_post was successfully updated." }
+        format.html { redirect_to original_post_url(@original_post), notice: "Original post was successfully updated." }
         format.json { render :show, status: :ok, location: @original_post }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,21 +52,19 @@ class OrignialPostsController < ApplicationController
     @original_post.destroy
 
     respond_to do |format|
-      format.html { redirect_to original_posts_url, notice: "Original Post was successfully destroyed." }
+      format.html { redirect_to original_posts_url, notice: "Original post was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_original_post
+      @original_post = OriginalPost.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    @user = User.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def original_post_params
-    params.require(:original_post).permit(:full_name, :original_post_name, :email, :password, :password_confirmation, :bio, :profile_image, :instagram, :tiktok_url, :snapchat_url)
-  end
-end
+    # Only allow a list of trusted parameters through.
+    def original_post_params
+      params.require(:original_post).permit(:body, :image, :user_id)
+    end
 end

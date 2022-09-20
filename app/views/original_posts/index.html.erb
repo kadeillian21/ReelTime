@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Original posts</h1>
+
+<div id="original_posts">
+  <% @original_posts.each do |original_post| %>
+    <%= render original_post %>
+    <p>
+      <%= link_to "Show this original post", original_post %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New original post", new_original_post_path %>

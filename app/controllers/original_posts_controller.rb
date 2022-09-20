@@ -1,5 +1,6 @@
 class OriginalPostsController < ApplicationController
   before_action :set_original_post, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy ]
 
   # GET /original_posts or /original_posts.json
   def index
@@ -61,6 +62,10 @@ class OriginalPostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_original_post
       @original_post = OriginalPost.find(params[:id])
+    end
+
+    def set_user
+      @user = current_user.id
     end
 
     # Only allow a list of trusted parameters through.

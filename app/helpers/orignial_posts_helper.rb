@@ -1,4 +1,7 @@
 module OrignialPostsHelper
+
+  # Helper name is broken
+
   def post_image_for(original_post, width = "", height = "")
     @image = original_post.image
     if @image == nil

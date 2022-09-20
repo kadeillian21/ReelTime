@@ -6,7 +6,7 @@
 
   <p>
     <strong>Image:</strong>
-    <%= original_post.image %>
+    <%= image_tag @original_post.image_url if @original_post.image %>
   </p>
 
   <p>

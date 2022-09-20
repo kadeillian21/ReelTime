@@ -1,6 +1,6 @@
 class OriginalPostsController < ApplicationController
   before_action :set_original_post, only: %i[ show edit update destroy ]
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ new create edit update destroy ]
 
   # GET /original_posts or /original_posts.json
   def index
@@ -23,6 +23,7 @@ class OriginalPostsController < ApplicationController
   # POST /original_posts or /original_posts.json
   def create
     @original_post = OriginalPost.new(original_post_params)
+    @original_post.user_id = current_user.id
 
     respond_to do |format|
       if @original_post.save
@@ -70,6 +71,6 @@ class OriginalPostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def original_post_params
-      params.require(:original_post).permit(:body, :image, :user_id)
+      params.require(:original_post).permit(:body, :image)
     end
 end

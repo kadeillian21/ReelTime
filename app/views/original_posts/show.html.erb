@@ -3,8 +3,8 @@
 <%= render @original_post %>
 
 <div>
-  <%= link_to "Edit this original post", edit_original_post_path(@original_post) %> |
+  <%= edit_original_post(@original_post) %> |
   <%= link_to "Back to original posts", original_posts_path %>
 
-  <%= button_to "Destroy this original post", @original_post, method: :delete %>
+  <%= delete_original_post(@original_post) %>
 </div>

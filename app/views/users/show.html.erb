@@ -8,5 +8,6 @@
 
   <%= destroy_user(@user) %>
 
-  <%= link_to "Follow this User", new_relationship_path %>
+  <%# TODO: Fix Error with 'method: post' coming from server.%>
+  <%= button_to "Follow this User", {controller: "relationships", action: "create", leader_id: @user.id, method: post} %>
 </div>

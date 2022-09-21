@@ -9,5 +9,5 @@
   <%= destroy_user(@user) %>
 
   <%# TODO: Fix Error with 'method: post' coming from server.%>
-  <%= button_to "Follow this User", {controller: "relationships", action: "create", leader_id: @user.id, method: post} %>
+  <%= button_to "Follow", {controller: "relationships", action: "create", leader_id: @user.id, method: :post} %>
 </div>

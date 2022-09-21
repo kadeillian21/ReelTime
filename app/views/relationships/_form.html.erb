@@ -1,0 +1,19 @@
+<%= form_with(model: relationship) do |form| %>
+  <% if relationship.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(relationship.errors.count, "error") %> prohibited this user from being followed:</h2>
+
+      <ul>
+        <% relationship.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label "Follow"%>
+    <%= form.submit %>
+  </div>
+<%end%>
+

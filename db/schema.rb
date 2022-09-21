@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_09_20_135027) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
   enable_extension "plpgsql"
 
   create_table "original_posts", force: :cascade do |t|
@@ -39,8 +40,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_20_135027) do
 
   create_table "users", force: :cascade do |t|
     t.string "full_name"
-    t.string "user_name"
-    t.string "email"
+    t.citext "user_name"
+    t.citext "email"
     t.string "password_digest"
     t.text "bio"
     t.text "image_data"

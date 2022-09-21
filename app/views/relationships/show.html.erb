@@ -1,8 +1,0 @@
-<h1>Relationship</h1>
-
-
-  <div><%= @relationship.follower.user_name%> Follows,
-  <%= @relationship.leader.user_name%></div>
-  <a href="<%="/users/#{@relationship.leader.id}"%>">
-    <%="Back to #{@relationship.leader.user_name}'s page"%>
-  </a>  

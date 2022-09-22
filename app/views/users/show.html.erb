@@ -7,7 +7,8 @@
   <%= edit_user(@user) %>
 
   <%= destroy_user(@user) %>
-
-  <%# TODO: Fix Error with 'method: post' coming from server.%>
-  <%= button_to "Follow", {controller: "relationships", action: "create", leader_id: @user.id, method: :post} %>
 </div>
+  <%# TODO: Fix Error with 'method: post' coming from server.%>
+  <%= button_to "Follow", {controller: "relationships", action: "create", leader_id: @user.id, method: :post} %>|
+  <%= button_to "Unfollow", {controller: "relationships", action: "destroy", leader_id: @user.id, method: :delete}%>
+

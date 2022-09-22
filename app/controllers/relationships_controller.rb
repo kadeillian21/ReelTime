@@ -11,7 +11,7 @@ class RelationshipsController < ApplicationController
     @relationship = Relationship.new(leader_id: params[:leader_id], follower_id: current_user.id)
     respond_to do |format|
       if @relationship.save
-        format.html { redirect_to relationship_url(@relationship), notice: "User followed." }
+        format.html { redirect_to user_path(:id), notice: "User followed." }
         format.json { render :show, status: :created, location: @relationship }
       end
     end

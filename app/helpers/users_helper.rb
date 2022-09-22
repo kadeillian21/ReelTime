@@ -20,4 +20,8 @@ module UsersHelper
       link_to "Edit this user", edit_user_path(user)
     end
   end
+
+  def follow_for(user)
+    @leader = user
+  end
 end

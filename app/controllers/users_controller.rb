@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @relationship = Relationship.find_by(leader_id: @user.id, follower_id: current_user.id)
   end
 
   # GET /users/new

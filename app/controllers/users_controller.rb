@@ -51,6 +51,8 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    relationship = Relationship.where(follower_id: @user.id)
+    relationship.destroy_all
     @user.destroy
 
     respond_to do |format|

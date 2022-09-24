@@ -24,4 +24,9 @@ module UsersHelper
   def follow_for(user)
     @leader = user
   end
+
+  def show_leader_names(user)
+    leaders = user.leaders
+    return leader.full_name
+  end
 end

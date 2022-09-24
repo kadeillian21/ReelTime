@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, :original_posts, :relationships
+  resources :users, :original_posts, :relationships, :shared_posts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

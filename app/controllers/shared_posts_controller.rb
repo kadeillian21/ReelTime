@@ -4,6 +4,7 @@ class SharedPostsController < ApplicationController
   end
 
   def index
+    @shared_posts = SharedPost.all
   end
 
   def new

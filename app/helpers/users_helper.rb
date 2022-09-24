@@ -11,17 +11,22 @@ module UsersHelper
 
   def destroy_user(user)
     if user == current_user
-      button_to "Destroy this user", user, method: :delete
+      button_to "Delete your profile", user, method: :delete
     end
   end
 
   def edit_user(user)
     if user == current_user
-      link_to "Edit this user", edit_user_path(user)
+      link_to "Edit your profile", edit_user_path(user)
     end
   end
 
   def follow_for(user)
     @leader = user
+  end
+
+  def show_leader_names(user)
+    leaders = user.leaders
+    return leader.full_name
   end
 end

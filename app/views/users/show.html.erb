@@ -14,5 +14,22 @@
   <% else %>
     <%= button_to "Follow", {controller: "relationships", action: "create", leader_id: @user.id}, method: :post %>
   <% end %>
-  </div>
+</div>
+
+
+<div>
+  Followers: <% @user.followers.each do |follower|%>
+    <a class="btn btn-primary" href="<%=follower.id%>">
+      <%= follower.full_name %>
+    </a>
+  <%end%>
+</div>
+<div>
+  Following: 
+    <% @user.leaders.each do |leader|%>
+      <a class="btn btn-primary" href="<%=leader.id%>">
+        <%= leader.full_name %>
+      </a>
+    <%end%>
+</div>
 

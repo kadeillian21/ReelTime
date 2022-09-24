@@ -9,6 +9,7 @@ class SharedPostsController < ApplicationController
   end
 
   def create
+    @post = SharedPost.new(post_params(url))
   end
 
   def edit
@@ -19,4 +20,10 @@ class SharedPostsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  # def shared_post_params
+  #   params.require(:shared_post).permit(:url, :title)
+  # end
 end

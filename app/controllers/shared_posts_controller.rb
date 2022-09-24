@@ -16,7 +16,7 @@ class SharedPostsController < ApplicationController
     @shared_post = SharedPost.new(user_id: current_user.id, title: post_params[:title], description: post_params[:description], image_url: post_params[:image_url], url: post_params[:url])
     respond_to do |format|
       if @shared_post.save
-        format.html { redirect_to users_url(@shared_post), notice: "Link shared!." }
+        format.html { redirect_to shared_post_url(@shared_post), notice: "Link shared!." }
         format.json { render :show, status: :created, location: @shared_post }
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -3,9 +3,14 @@
 </div>
 
 
-<div>
+<!-- <div>
   <%= image_tag(shared_post.image_url, alt: shared_post.description)%>
-</div>
+</div> -->
+
+<p>
+    <strong>Image:</strong>
+      <%= post_image_for(shared_post, 600, 400) %>
+</p>
 
 <div>
   <%= shared_post.description%>

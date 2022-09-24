@@ -1,5 +1,6 @@
 class SharedPostsController < ApplicationController
   def show
+    @shared_post = SharedPost.find_by(id: params[:id])
   end
 
   def index
@@ -10,9 +11,8 @@ class SharedPostsController < ApplicationController
   end
 
   def create
-    # post_params = post_params(:url)
-    # @shared_post = SharedPost.new(url: post_params[:url], image_url: post_params[:image_url], title: post_params[:title], user_id: current_user.id)
-    @shared_post = SharedPost.new.post_params(params["shared_post"][:url])
+    post_params = post_params(params["shared_post"][:url])
+    @shared_post = SharedPost.new(user_id: current_user.id, title: post_params[:title], description: post_params[:description], image_url: post_params[:image_url], url: post_params[:url])
     respond_to do |format|
       if @shared_post.save
         format.html { redirect_to users_url(@shared_post), notice: "Link shared!." }
@@ -35,7 +35,11 @@ class SharedPostsController < ApplicationController
 
   private
 
-  # def shared_post_params
-  #   params.require(:shared_post).permit(:url, :title)
-  # end
+  def post_params(url)
+    post = LinkThumbnailer.generate(url)
+    title = post.title
+    description = post.description
+    image = post.images.first.src.to_s
+    return { title: title, image_url: image, url: url, description: description }
+  end
 end

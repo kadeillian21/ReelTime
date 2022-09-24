@@ -2,9 +2,9 @@
   <%= shared_post.title%>
 </div>
 
-<%# TODO Add description to shared_post model to place here as an alt%>
+
 <div>
-  <%= image_tag(shared_post.image_url, alt: "A shared post")%>
+  <%= image_tag(shared_post.image_url, alt: shared_post.description)%>
 </div>
 
 <div>

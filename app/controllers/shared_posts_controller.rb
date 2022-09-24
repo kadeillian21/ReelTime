@@ -9,7 +9,15 @@ class SharedPostsController < ApplicationController
   end
 
   def create
-    @post = SharedPost.new(post_params(url))
+    @shared_post = SharedPost.new(post_params("https://www.cnet.com/science/space/stunning-nasa-james-webb-telescope-image-reveals-neptunes-delicate-rings/"))
+    respond_to do |format|
+      if @shared_post.save
+        format.html { redirect_to post_url(@shared_post), notice: "Link shared!." }
+        format.json { render :show, status: :created, location: @shared_post }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @shared_post.errors, status: :unprocessable_entity }
+      end
   end
 
   def edit

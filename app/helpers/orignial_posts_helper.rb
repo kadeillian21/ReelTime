@@ -2,7 +2,7 @@ module OrignialPostsHelper
 
   # Helper name is broken
 
-  def post_image_for(original_post, width = "", height = "")
+  def original_post_image_for(original_post, width = "", height = "")
     @image = original_post.image
     if @image == nil
       @image_original_post = image_tag("user.jpg", alt: "#{current_user.full_name}'s post #{original_post.id}", width: width, height: height)

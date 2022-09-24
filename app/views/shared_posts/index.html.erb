@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Shared Posts</h1>
+
+<div>
+  <% @shared_posts.each do |shared_post| %>
+    <%= render shared_post %>
+    <p>
+      <%= link_to "See this post", shared_post %>
+    </p>
+  <% end %>
+</div>
+

@@ -7,6 +7,7 @@ class AllPostsController < ApplicationController
     @original_posts = OriginalPost.all
     @shared_posts = SharedPost.all
     @all_posts = combine_posts(@original_posts, @shared_posts)
+    # @all_posts.order(created_at DESC)
   end
 
   private
@@ -31,6 +32,6 @@ class AllPostsController < ApplicationController
     sp.each do |post|
       posts << post
     end
-    return posts
+    return posts.sort_by { |post| post.post_time }
   end
 end

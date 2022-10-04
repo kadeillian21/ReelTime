@@ -1,7 +1,11 @@
 <div class="card" style="width: 18rem;" id="<%= dom_id original_post %>">
 
-  <img src="<%= original_post.image_url%>" class="card-img-top" alt="<%= original_post.body%>">
-  <div class="card-body">
+  <% if !original_post.image%>
+    <img src="<%=image_url("no-image.jpg")%>" class="card-img-top" alt="<%= original_post.body%>">
+  <%else%>
+    <img src="<%= original_post.image_url%>" class="card-img-top" alt="<%= original_post.body%>">
+  <%end%>
+  <div class="card-body ">
     <h5 class="card-title"><%= original_post.user.full_name%></h5>
     <p class="card-text"><%= original_post.body %></p>
     <%= link_to "See this post", original_post, class: "btn btn-primary" %>

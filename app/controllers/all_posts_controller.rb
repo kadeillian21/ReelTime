@@ -4,8 +4,9 @@ class AllPostsController < ApplicationController
   before_action :set_user, only: %i[ new create edit update destroy ]
 
   def index
-    @original_posts = OriginalPosts.all
-    @shared_posts = SharedPosts.all
+    @original_posts = OriginalPost.all
+    @shared_posts = SharedPost.all
+    @all_posts = combine_posts(@original_posts, @shared_posts)
   end
 
   private
@@ -20,5 +21,16 @@ class AllPostsController < ApplicationController
 
   def set_user
     @user = current_user.id
+  end
+
+  def combine_posts(op, sp)
+    posts = []
+    op.each do |post|
+      posts << post
+    end
+    sp.each do |post|
+      posts << post
+    end
+    return posts
   end
 end

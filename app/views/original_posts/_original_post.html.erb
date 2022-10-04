@@ -1,17 +1,9 @@
-<div id="<%= dom_id original_post %>">
-  <p>
-    <strong>Body:</strong>
-    <%= original_post.body %>
-  </p>
+<div class="card" style="width: 18rem;" id="<%= dom_id original_post %>">
 
-  <p>
-    <strong>Image:</strong>
-      <%= original_post_image_for(original_post, 300, 300) %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= original_post.user.full_name %>
-  </p>
-
+  <img src="<%= original_post.image_url%>" class="card-img-top" alt="<%= original_post.body%>">
+  <div class="card-body">
+    <h5 class="card-title"><%= original_post.user.full_name%></h5>
+    <p class="card-text"><%= original_post.body %></p>
+    <%= link_to "See this post", original_post, class: "btn btn-primary" %>
+  </div>
 </div>

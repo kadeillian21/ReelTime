@@ -1,6 +1,8 @@
 class SharedPostsController < ApplicationController
+  before_action :set_shared_post, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ new create edit update destroy ]
+
   def show
-    @shared_post = SharedPost.find_by(id: params[:id])
   end
 
   def index
@@ -12,8 +14,7 @@ class SharedPostsController < ApplicationController
   end
 
   def create
-    post_params = post_params(params["shared_post"][:url])
-    @shared_post = SharedPost.new(user_id: current_user.id, title: post_params[:title], description: post_params[:description], image_url: post_params[:image_url], url: post_params[:url])
+    @shared_post = shared_post_import_data(params["shared_post"][:url])
     respond_to do |format|
       if @shared_post.save
         format.html { redirect_to shared_post_url(@shared_post), notice: "Link shared!." }
@@ -36,11 +37,19 @@ class SharedPostsController < ApplicationController
 
   private
 
-  def post_params(url)
+  def shared_post_import_data(url)
     post = LinkThumbnailer.generate(url)
     title = post.title
     description = post.description
     image = post.images.first.src.to_s
-    return { title: title, image_url: image, url: url, description: description }
+    return SharedPost.new(user_id: current_user.id, title: title, image_url: image, url: url, description: description)
+  end
+
+  def set_shared_post
+    @shared_post = SharedPost.find(params[:id])
+  end
+
+  def set_user
+    @user = current_user.id
   end
 end

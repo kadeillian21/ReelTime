@@ -1,17 +1,14 @@
-<div>
-  <%= shared_post.title%>
-</div>
+<div class="card" style="width: 18rem;" id="<%= dom_id shared_post %>">
 
 
-<!-- <div>
-  <%= image_tag(shared_post.image_url, alt: shared_post.description)%>
-</div> -->
-
-<p>
-    <strong>Image:</strong>
-      <%= shared_post_image_for(shared_post, 600, 400) %>
-</p>
-
-<div>
-  <%= shared_post.description%>
+   <% if !shared_post.image_url%>
+    <img src="<%=image_url("no-image.jpg")%>" class="card-img-top" alt="<%= shared_post.description%>">
+  <%else%>
+    <img src="<%= shared_post.image_url%>" class="card-img-top" alt="<%= shared_post.description%>">
+  <%end%>
+  <div class="card-body ">
+    <h5 class="card-title"><%= shared_post.title%></h5>
+    <p class="card-text"><%= shared_post.description %></p>
+    <%= link_to "See this post", shared_post, class: "btn btn-primary" %>
+  </div>
 </div>

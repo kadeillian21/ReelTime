@@ -60,17 +60,16 @@ class OriginalPostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_original_post
-      @original_post = OriginalPost.find(params[:id])
-    end
 
-    def set_user
-      @user = current_user.id
-    end
+  def set_original_post
+    @original_post = OriginalPost.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def original_post_params
-      params.require(:original_post).permit(:body, :image)
-    end
+  def set_user
+    @user = current_user.id
+  end
+
+  def original_post_params
+    params.require(:original_post).permit(:body, :image)
+  end
 end
